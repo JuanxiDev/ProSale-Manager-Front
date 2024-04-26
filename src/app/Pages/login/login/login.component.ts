@@ -19,8 +19,8 @@ export class LoginComponent {
 
 
   loginForm = this.formBuilder.group({
-    email: ['paticas@gmail.com', [Validators.required,Validators.email, Validators.pattern('paticas232@gmail.com')]],
-    password: ['', [Validators.required, Validators.pattern('1234')]]
+    email: ['pablounin@gmail.com', [Validators.required,Validators.email, Validators.pattern('pablounin@gmail.com')]],
+    password: ['uninpahu', [Validators.required, Validators.pattern('uninpahu')]]
   })
 
   constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) { }
@@ -57,7 +57,7 @@ export class LoginComponent {
     else {
       this.loginForm.markAllAsTouched()
       this.errorLogin = true;
-      alert('Revise los datos LENTO')
+      alert('Revise los datos')
     }
   }
 

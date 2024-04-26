@@ -10,7 +10,7 @@ import { User } from '../../user';
 export class LoginService {
 
   userLogued: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  loguedUserData: BehaviorSubject<User> = new BehaviorSubject<User>({id:0, email:''})
+  loguedUserData: BehaviorSubject<User> = new BehaviorSubject<User>({idUser:1, name:' ', lastname:' ', telefono: 3, rol: '', status:''})
 
   constructor(private cliente: HttpClient) { }
 

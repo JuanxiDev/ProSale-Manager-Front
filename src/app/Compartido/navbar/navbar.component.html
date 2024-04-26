@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="inicio">Inventarios.Facil jijijiji</a>
+    <a class="navbar-brand" routerLink="inicio">ProSale Manager</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,10 +10,10 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="inicio" routerLinkActive="active">Inicio</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="userLoginOn">
           <a class="nav-link" routerLink="productos" routerLinkActive="active">Productos</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="userLoginOn">
           <a class="nav-link" routerLink="users" routerLinkActive="active">Usuarios</a>
         </li>
         <li class="nav-item dropdown">
@@ -33,6 +33,6 @@
 </nav>
 
 
-<div class="container">
+<div>
   <router-outlet></router-outlet>
 </div>

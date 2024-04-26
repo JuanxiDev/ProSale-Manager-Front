@@ -13,6 +13,7 @@ import { User } from '../../user';
 @Component({
   selector: 'app-producto-lista',
   templateUrl: './producto-lista.component.html',
+  styleUrl: './producto-lista.component.css'
 })
 export class ProductoListaComponent {
   productos: Producto[];
