@@ -3,28 +3,27 @@
 </div>
 <div class="text-center w-full" style="padding: 30px; width: 100%" *ngIf="userLoginOn">
 
-  <div class="d-flex flex-column align-items-center justify-content-center ">
+  <div class="d-flex flex-column align-items-center justify-content-center">
     <h3>
       Bienvenido {{userData?.name}}
       administra tus productos
     </h3>
 
     <br>
-
-    <table class="table table-striped table-hover align-middle">
-      <thead class="table">
+    <table datatable class="row-border hover">
+      <thead>
         <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Descripción</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Stock</th>
-          <th scope="col">Funciones</th>
+          <th id="id">Id</th>
+          <th id="name">Nombre</th>
+          <th id="descr">Descripción</th>
+          <th id="precio">Precio</th>
+          <th id="stock">Stock</th>
+          <th id="buttons">Funciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let producto of productos">
-          <th scope="row">{{producto.idProducto}}</th>
+          <td>{{producto.idProducto}}</td>
           <td>{{producto.nombreProducto}}</td>
           <td>{{producto.descripcion}}</td>
           <td>{{producto.precio}}</td>
@@ -38,10 +37,19 @@
             </div>
           </td>
         </tr>
-
+        <tr>
+          <td id="uno">3</td>
+          <td id="dos">Iamout</td>
+          <td id="tres">Ofinspiration</td>
+          <td id="cuatro">Bar</td>
+          <td id="5">Bar</td>
+          <td id="6">Bar</td>
+        </tr>
       </tbody>
     </table>
+
   </div>
+
 
 
   <!-- Boton nuevo producto -->
@@ -127,7 +135,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" (click)="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" (click)="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar producto</button>
           </div>
         </form>

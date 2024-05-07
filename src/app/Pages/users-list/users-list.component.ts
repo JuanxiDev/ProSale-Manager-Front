@@ -5,6 +5,7 @@ import { UsuarioService } from '../../services/user/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
 import { User } from '../../user';
+import { UserService } from '../../services/user/userlog.service'
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +22,14 @@ export class UsersListComponent {
   usuarios: User[];
   userLoginOn: boolean = false;
   userData?: User;
+  userlog: any;
 
   constructor(private usuarioServicio: UsuarioService,
     private enrutador: Router,
     private ruta: ActivatedRoute,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private userService: UserService
+  ) { }
 
 
   salida(): void {
@@ -42,6 +46,9 @@ export class UsersListComponent {
         this.userLoginOn = userLoginOn;
       }
     });
+
+    this.userlog = this.userService.getUserlog();
+    console.log(this.userlog);
 
     this.loginService.loguedUserData.subscribe({
       next: (userData) => {
@@ -92,10 +99,10 @@ export class UsersListComponent {
 
 
 
-  //TS Agregar producto
+  //TS Agregar usuario
   usuario: User = new User();
 
-  onSubmitAdd() {
+  onSubmitUss() {
     this.usuarioServicio.agregarUsuario(this.usuario).subscribe(
       {
         next: (datos) => this.obtenerUsuarios(),

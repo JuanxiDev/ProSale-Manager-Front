@@ -17,11 +17,10 @@
           <a class="nav-link" routerLink="users" routerLinkActive="active">Usuarios</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Cuenta
           </a>
           <ul class="dropdown-menu">
-            <li *ngIf="userLoginOn"><a class="dropdown-item" routerLink="inicio" routerLinkActive="active">Mi cuenta</a></li>
             <li *ngIf="userLoginOn"><button type="button" (click)="logout()" class="dropdown-item" routerLink="login" routerLinkActive="active">Salir</button></li>
             <li *ngIf="!userLoginOn"><a class="dropdown-item" routerLink="login" routerLinkActive="active">Iniciar
                 sesión</a></li>

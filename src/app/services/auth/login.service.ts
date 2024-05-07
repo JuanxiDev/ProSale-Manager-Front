@@ -10,14 +10,14 @@ import { User } from '../../user';
 export class LoginService {
 
   userLogued: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  loguedUserData: BehaviorSubject<User> = new BehaviorSubject<User>({idUser:1, name:' ', lastname:' ', telefono: 3, rol: '', status:''})
+  loguedUserData: BehaviorSubject<User> = new BehaviorSubject<User>({ idUser:1, username: ' ', name: ' ', lastname: ' ', telefono: 3, rol: '', status: '', password: ' '})
 
   constructor(private cliente: HttpClient) { }
 
 
   login(credentials: LoginRequest): Observable<User> {
     return this.cliente.get<User>('././assets/data.json').pipe(
-      tap((userData :User) => {
+      tap((userData: User) => {
         this.loguedUserData.next(userData);
         this.userLogued.next(true)
       }),
@@ -26,22 +26,22 @@ export class LoginService {
   }
 
 
-  private posibleError(error:HttpErrorResponse){
-    if(error.status===0){
+  private posibleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
       console.error('Se ha detectado un error')
     }
-    else{
+    else {
       console.error('Backend retornó el código de error', error.status, error.error);
     }
-    return throwError(()=> new Error('Algo falló. Por favor intenta nuevamente'));
+    return throwError(() => new Error('Algo falló. Por favor intenta nuevamente'));
   }
 
 
-  get userData():Observable<User>{
+  get userData(): Observable<User> {
     return this.loguedUserData.asObservable();
   }
 
-  get userLoginOn(): Observable<boolean>{
+  get userLoginOn(): Observable<boolean> {
     return this.userLogued.asObservable();
   }
 

@@ -1,50 +1,33 @@
 <div id="logCube" class="container h-full p-5 d-flex flex-column align-items-center rounded-3"
   style="max-width: 400px; max-height: 600px; border: 3px solid; border-color: rgb(235,117,44); box-shadow: 0px 6px 10px 3px rgb(235,117,44);">
 
-  <img src="././././assets/Images/vector.png" alt="user" class="w-50 border rounded-circle" style="border: 3px solid red; border-color: rgb(235,117,44);">
+  <img src="././././assets/Images/vector.png" alt="user" class="w-50 border rounded-circle"
+    style="border: 3px solid red; border-color: rgb(235,117,44);">
 
-  <p class="text-danger">{{loginError}}</p>
+  <p class="text-danger">Inicia tu sesión</p>
 
-  <form [formGroup]="loginForm" class="bg-white" style="color: rgb(235,117,44);">
+  <form class="bg-white" style="color: rgb(235,117,44);" (ngSubmit)="login2(username, passcode)">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label ">Usuario</label>
-
-      <input (click)="errorLogin = false" formControlName="email" type="email" class="form-control"
-        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Emagil">
-
-      <div *ngIf="errorLogin">
-        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-          <div *ngIf="email.errors?.['email']">Formato de usuario invalido.
-          </div>
-          <div *ngIf="email.errors?.['required']">El Email es requerido.</div>
-          <div
-            *ngIf="email.value !== 'paticas232@gmail.com' && (!email.errors?.['required'] || !email.errors?.['email'])">
-            El email no es correcto</div>
+      <input (click)="userNotFound = false" type="text" class="form-control" name="usuario" #userInput="ngModel" [(ngModel)]="username" 
+        placeholder="Ingrese su usuario" required>
+        <div *ngIf="!username && (userInput.touched || userNotFound)" class="alert alert-danger">El usuario es requerido.</div>
+        <div *ngIf="this.userNotFound && username" class="alert alert-danger">
+          Usuario no encontrado
         </div>
-      </div>
     </div>
-
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-
-      <input (click)="errorLogin = false" formControlName="password" type="password" class="form-control"
-        id="exampleInputPassword1" aria-describedby="passHelp" placeholder="Ingrese su Contraseña">
-      <div *ngIf="errorLogin">
-        <div *ngIf="password.invalid " class="alert alert-danger">
-          <div *ngIf="password.errors?.['required']">Se requiere una contraseña.</div>
-          <div *ngIf="password.value !== '1234' && !password.errors?.['required']">Contraseña incorrecta</div>
+      <input (click)="passNotFound = false" type="password" class="form-control" name="contrasena" #passInput="ngModel" [(ngModel)]="passcode"
+        placeholder="Ingrese su Contraseña" required>
+        <div *ngIf="!passcode && (passInput.touched || this.passNotFound)" class="alert alert-danger">Se requiere una contraseña.</div>
+        <div *ngIf="this.passNotFound && passcode " class="alert alert-danger">
+          Contraseña incorrecta
         </div>
-      </div>
-
       <div class="d-flex justify-content-center align-items-center m-3">
-        <button type="submit" (click)="login()" class="btn border border-white text-white" style="background-color: rgb(235,117,44);" >Ingresar</button>
+        <button type="submit" class="btn border border-white text-white"
+          style="background-color: rgb(235,117,44);">probar</button>
       </div>
-
-
-      <div id="passHelp" class="form-text" style="color: rgb(235,117,44);">Nunca pediremos que compartas tu contraseña.</div>
     </div>
-
   </form>
 
-  
+
 </div>

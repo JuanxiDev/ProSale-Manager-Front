@@ -7,10 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './Pages/inicio/inicio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './Pages/login/login/login.component';
-import { HeaderComponent } from './Compartido/header/header.component';
-import { FooterComponent } from './Compartido/footer/footer.component';
 import { NavbarComponent } from './Compartido/navbar/navbar.component';
 import { UsersListComponent } from './Pages/users-list/users-list.component';
+import { DataTablesModule } from 'angular-datatables';
+
+
 
 @NgModule({
   declarations: [
@@ -18,20 +19,20 @@ import { UsersListComponent } from './Pages/users-list/users-list.component';
     ProductoListaComponent,
     InicioComponent,
     LoginComponent,
-    HeaderComponent,
-    FooterComponent,
     NavbarComponent,
-    UsersListComponent,
-  ],
+    UsersListComponent
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+
   ],
   bootstrap: [AppComponent]
 })

@@ -6,8 +6,10 @@
   <div class="d-flex flex-column align-items-center justify-content-center ">
 
     <h3>
-      Bienvenido {{userData?.name}}
-      administra tus Vendedores
+      Bienvenido {{userlog.name}}
+    </h3>
+    <h3 *ngIf="userlog.rol === 'Administrador' ">
+      administra tus Vendedores. 
     </h3>
 
     <br>
@@ -16,23 +18,27 @@
       <thead class="table">
         <tr>
           <th scope="col">Id</th>
+          <th scope="col">Username</th>
           <th scope="col">Nombre</th>
           <th scope="col">Apellido</th>
           <th scope="col">Teléfono</th>
+          <th scope="col">Contraseña</th>
           <th scope="col">Rol</th>
           <th scope="col">Estado</th>
-          <th scope="col">Funciones</th>
+          <th *ngIf="userlog.rol === 'Administrador' " scope="col">Funciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let usuario of usuarios">
           <th scope="row">{{usuario.idUser}}</th>
+          <td>{{usuario.username}}</td>
           <td>{{usuario.name}}</td>
           <td>{{usuario.lastname}}</td>
           <td>{{usuario.telefono}}</td>
+          <td>{{usuario.password}}</td>
           <td>{{usuario.rol}}</td>
           <td>{{usuario.status}}</td>
-          <td class="text-center">
+          <td class="text-center" *ngIf="userlog.rol === 'Administrador' ">
             <div>
               <button (click)="editarUsuario(usuario.idUser)" type="button" class="btn btn-warning btn-sm me-3"
                 data-bs-toggle="modal" data-bs-target="#modalEdit">Editar</button>
@@ -48,7 +54,7 @@
 
     <!-- Boton nuevo usuario -->
     <button type="button" class="btn btn-primary border border-white" style="background-color: rgb(235,117,44);"
-      data-bs-toggle="modal" data-bs-target="#modalAdd">
+      data-bs-toggle="modal" data-bs-target="#modalAdd" *ngIf="userlog.rol === 'Administrador' ">
       Agregar nuevo usuario
     </button>
 
@@ -62,31 +68,43 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresa tu usuario</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form #formAdd (ngSubmit)="onSubmitAdd()">
+        <form #formAdd (ngSubmit)="onSubmitUss()">
           <div class="modal-body">
             <div class="mb-3">
-              <label for="nombreUsuario" class="form-label">Nombre del usuario</label>
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username" required="true"
+                [(ngModel)]="usuario.username">
+            </div>
+            <div class="mb-3">
+              <label for="nombreUsuario" class="form-label">Nombre</label>
               <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required="true"
                 [(ngModel)]="usuario.name">
             </div>
             <div class="mb-3">
-              <label for="apellido" class="form-label">Apellido del usuario</label>
+              <label for="apellido" class="form-label">Apellido</label>
               <input type="text" class="form-control" id="apellido" name="apellido" required="true"
                 [(ngModel)]="usuario.lastname">
             </div>
             <div class="mb-3 form-check">
-              <label for="telefono" class="form-label">Teléfono del usuario</label>
+              <label for="telefono" class="form-label">Teléfono</label>
               <input type="number" class="form-control" id="telefono" name="telefono" required="true"
                 [(ngModel)]="usuario.telefono">
             </div>
+            <div class="mb-3">
+              <label for="contrasena" class="form-label">Contraseña</label>
+              <input type="text" class="form-control" id="contrasena" name="contrasena" required="true"
+                [(ngModel)]="usuario.password">
+            </div>
             <div class="mb-3 form-check">
-              <label for="rol" class="form-label">Rol del usuario</label>
+              <label for="rol" class="form-label">Rol</label>
               <input type="text" class="form-control" id="rol" name="rol" required="true" [(ngModel)]="usuario.rol">
             </div>
             <div class="mb-3 form-check">
-              <label for="status" class="form-label">Estatus del usuario</label>
-              <input type="text" class="form-control" id="status" name="status" required="true"
-                [(ngModel)]="usuario.status">
+              <label for="status" class="form-label">Estado del usuario</label>
+              <select class="form-control" id="status" name="status" required="true" [(ngModel)]="usuario.status">
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+              </select>
             </div>
           </div>
           <div class="modal-footer">
@@ -111,6 +129,11 @@
         <form (ngSubmit)="onSubmitEdit(userEdit.idUser)">
           <div class="modal-body">
             <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username" required="true"
+                [(ngModel)]="userEdit.username">
+            </div>
+            <div class="mb-3">
               <label for="nombreUsuario" class="form-label">Nombre del usuario</label>
               <input type="text" class="form-control" id="name" name="name" required="true" [(ngModel)]="userEdit.name">
             </div>
@@ -126,7 +149,10 @@
             </div>
             <div class="mb-3 form-check">
               <label for="rol" class="form-label">Rol del usuario</label>
-              <input type="text" class="form-control" id="rol" name="rol" required="true" [(ngModel)]="userEdit.rol">
+              <select class="form-control" id="rol" name="rol" required="true" [(ngModel)]="userEdit.rol">
+                <option value="Administrador">Administrador</option>
+                <option value="Vendedor">Vendedor</option>
+              </select>
             </div>
           </div>
           <div class="mb-3 form-check">

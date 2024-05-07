@@ -4,6 +4,7 @@ import { ProductoService } from '../../services/produc/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
 import { User } from '../../user';
+import { LoginComponent } from '../login/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,19 @@ import { User } from '../../user';
   styleUrl: './producto-lista.component.css'
 })
 export class ProductoListaComponent {
+  
+
   productos: Producto[];
   userLoginOn: boolean = false;
   userData?: User;
+  user: any = this.loginComp.userlog;
 
   constructor(private productoServicio: ProductoService,
     private enrutador: Router,
     private ruta: ActivatedRoute,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private loginComp: LoginComponent
+  ) { }
 
 
   salida(): void {
@@ -34,16 +40,9 @@ export class ProductoListaComponent {
 
 
   ngOnInit() {
-    
     this.loginService.userLogued.subscribe({
       next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
-      }
-    });
-
-    this.loginService.loguedUserData.subscribe({
-      next: (userData) => {
-        this.userData = userData
       }
     });
     this.obtenerProductos()
@@ -52,10 +51,10 @@ export class ProductoListaComponent {
   private obtenerProductos() {
     //Consumir datos del observable (se suscribe)
     this.productoServicio.obtenerProductosLista().subscribe(
-      (datos => {
+      (datos=> {
         this.productos = datos;
-      })
-    );
+      }
+    ));
   }
 
 
