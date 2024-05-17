@@ -1,6 +1,4 @@
-
 import { Component, Injectable } from '@angular/core';
-import { Producto } from '../../producto';
 import { UsuarioService } from '../../services/user/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
@@ -18,7 +16,6 @@ import { UserService } from '../../services/user/userlog.service'
   styleUrl: './users-list.component.css'
 })
 export class UsersListComponent {
-  productos: Producto[];
   usuarios: User[];
   userLoginOn: boolean = false;
   userData?: User;

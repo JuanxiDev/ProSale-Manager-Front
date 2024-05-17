@@ -4,6 +4,7 @@ import { ProductoListaComponent } from './Pages/producto-lista/producto-lista.co
 import { InicioComponent } from './Pages/inicio/inicio.component';
 import { LoginComponent } from './Pages/login/login/login.component';
 import { UsersListComponent } from './Pages/users-list/users-list.component';
+import { ProveedorListaComponent } from "./Pages/proveedor-lista/proveedor-lista.component";
 
 
 //http:localhost:4200/productos
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'login', component : LoginComponent},
   {path: '',redirectTo: 'inicio', pathMatch: 'full'},
   {path: 'users', component : UsersListComponent},
+  {path: 'proveedores', component : ProveedorListaComponent}
 ];
 
 @NgModule({

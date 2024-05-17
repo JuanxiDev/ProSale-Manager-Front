@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/auth/login.service';
-import { ProductoListaComponent } from '../../Pages/producto-lista/producto-lista.component';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +9,7 @@ import { ProductoListaComponent } from '../../Pages/producto-lista/producto-list
 export class NavbarComponent {
   userLoginOn: boolean = false;
 
-  constructor(private loginService: LoginService, private product: ProductoListaComponent,) { }
+  constructor(private loginService: LoginService) { }
 
 
   /* ngOnDestroy(): void {

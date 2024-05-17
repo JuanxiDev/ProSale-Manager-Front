@@ -1,0 +1,170 @@
+<div class="container text-center" style="margin: 30px;" *ngIf="!userLoginOn">
+    <p>Debes iniciar sesión</p>
+</div>
+<div class="text-center w-full" style="padding: 30px; width: 100%" *ngIf="userLoginOn">
+
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <h3>
+            Bienvenido {{userData?.name}}
+            administra tus proveedores
+        </h3>
+
+        <br>
+        <table class="table table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <th id="id">Id</th>
+                    <th id="name">NIT</th>
+                    <th id="descr">Nombre</th>
+                    <th id="precio">Dirección</th>
+                    <th id="proveedor">Teléfono</th>
+                    <th id="precioProv">Celular</th>
+                    <th id="buttons">Funciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let proveedor of proveedores">
+                    <td>{{proveedor.idProveedor}}</td>
+                    <td>{{proveedor.nit}}</td>
+                    <td>{{proveedor.nombreProveedor}}</td>
+                    <td>{{proveedor.direccion}}</td>
+                    <td>{{proveedor.telefono}}</td>
+                    <td>{{proveedor.celular}}</td>
+                    <td class="text-center">
+                        <div>
+                            <button (click)="editarProveedor(proveedor.idProveedor)" type="button"
+                                class="btn btn-warning btn-sm me-3" data-bs-toggle="modal"
+                                data-bs-target="#modalEdit">Editar</button>
+                            <button (click)="eliminarProveedor(proveedor.idProveedor)" type="button"
+                                class="btn btn-danger btn-sm me-3">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+    <!-- Boton nuevo proveedor -->
+    <button type="button" class="btn border border-white text-white" style="background-color: rgb(235,117,44);"
+        data-bs-toggle="modal" data-bs-target="#modalAdd">
+        Agregar nuevo proveedor
+    </button>
+
+    <br>
+    <br>
+
+    <!----- Modal Agregar Proveedor ----->
+    <div class="modal fade" id="modalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresa tu Proveedor</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form #formAdd (ngSubmit)="onSubmitProv()">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombreProveedor" class="form-label">Nombre del Proveedor</label>
+                            <input type="text" class="form-control" id="nombreProveedor" name="nombreProveedor"
+                                required="true" [(ngModel)]="proveedor.nombreProveedor">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nit" class="form-label">Nit del Proveedor</label>
+                            <input type="number" class="form-control" id="nit" name="nit" required="true"
+                                [(ngModel)]="proveedor.nit">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <label for="direccion" class="form-label">Dirección del proveedor</label>
+                            <input type="text" class="form-control" id="direccion" name="direccion" required="true"
+                                [(ngModel)]="proveedor.direccion">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <label for="telefono" class="form-label">Teléfono del proveedor</label>
+                            <input type="number" class="form-control" id="telefono" name="telefono" required="true"
+                                [(ngModel)]="proveedor.telefono">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <label for="celular" class="form-label">Celular del proveedor</label>
+                            <input type="number" class="form-control" id="celular" name="celular" required="true"
+                                [(ngModel)]="proveedor.celular">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Agregar proveedor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!----- Modal ----->
+
+
+    <!----- Modal Editar Proveedor ----->
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica tu proveedor</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form (ngSubmit)="onSubmitEdit(proveedorEdit.idProveedor)">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombreProveedor" class="form-label">Nombre del Proveedor</label>
+                            <input type="text" class="form-control" id="nombreProveedor" name="nombreProveedor"
+                                required="true" [(ngModel)]="proveedorEdit.nombreProveedor">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nit" class="form-label">Nit del Proveedor</label>
+                            <input type="number" class="form-control" id="nit" name="nit" required="true"
+                                [(ngModel)]="proveedorEdit.nit">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <label for="direccion" class="form-label">Dirección del proveedor</label>
+                            <input type="text" class="form-control" id="direccion" name="direccion" required="true"
+                                [(ngModel)]="proveedorEdit.direccion">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <label for="telefono" class="form-label">Teléfono del proveedor</label>
+                            <input type="number" class="form-control" id="telefono" name="telefono" required="true"
+                                [(ngModel)]="proveedorEdit.telefono">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <label for="celular" class="form-label">Celular del proveedor</label>
+                            <input type="number" class="form-control" id="celular" name="celular" required="true"
+                                [(ngModel)]="proveedorEdit.celular">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" (click)="cancel()" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar proveedor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!----- Modal ----->
+
+
+    <div class="d-flex justify-content-center">
+        <footer style="width: 25%;">
+            <div class="d-flex justify-content-evenly"><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i
+                        class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-facebook"></i></a></div>
+            <ul class=" foot align-items-center ">
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="d-flex justify-content-center">ProSale Manager © 2024</p>
+        </footer>
+    </div>
+
+
+</div>

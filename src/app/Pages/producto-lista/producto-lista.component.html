@@ -10,13 +10,16 @@
     </h3>
 
     <br>
-    <table datatable class="row-border hover">
+    <table class="row-border hover table table-striped table-hover align-middle">
       <thead>
         <tr>
           <th id="id">Id</th>
           <th id="name">Nombre</th>
           <th id="descr">Descripción</th>
-          <th id="precio">Precio</th>
+          <th id="precio">Precio de venta</th>
+          <th id="precioProv">Precio de compra</th>
+          <th id="precioProv">Ganancia</th>
+          <th id="proveedor">Proveedor</th>
           <th id="stock">Stock</th>
           <th id="buttons">Funciones</th>
         </tr>
@@ -26,7 +29,10 @@
           <td>{{producto.idProducto}}</td>
           <td>{{producto.nombreProducto}}</td>
           <td>{{producto.descripcion}}</td>
-          <td>{{producto.precio}}</td>
+          <td>$ {{producto.precio}}</td>
+          <td>$ {{producto.precioprov}}</td>
+          <td>{{((producto.precio - producto.precioprov) / producto.precioprov * 100).toFixed(2)}} %</td>
+          <td>{{producto.proveedor.nombreProveedor}}</td>
           <td>{{producto.stock}}</td>
           <td class="text-center">
             <div>
@@ -36,14 +42,6 @@
                 class="btn btn-danger btn-sm me-3">Eliminar</button>
             </div>
           </td>
-        </tr>
-        <tr>
-          <td id="uno">3</td>
-          <td id="dos">Iamout</td>
-          <td id="tres">Ofinspiration</td>
-          <td id="cuatro">Bar</td>
-          <td id="5">Bar</td>
-          <td id="6">Bar</td>
         </tr>
       </tbody>
     </table>
@@ -87,6 +85,19 @@
                 [(ngModel)]="producto.precio">
             </div>
             <div class="mb-3 form-check">
+              <label for="proveedor" class="form-label">Proveedor del producto</label>
+              <br>
+              <select name="idProv" [(ngModel)]="selectedProveedor">
+                <option *ngFor="let proveedor of proveedores" [value]="proveedor.nombreProveedor">
+                  {{proveedor.nombreProveedor}}</option>
+              </select>
+            </div>
+            <div class="mb-3 form-check">
+              <label for="precioProv" class="form-label">Precio del proveedor</label>
+              <input type="number" class="form-control" id="precioprov" name="precioprov" required="true"
+                [(ngModel)]="producto.precioprov">
+            </div>
+            <div class="mb-3 form-check">
               <label for="stock" class="form-label">Stock del producto</label>
               <input type="number" class="form-control" id="stock" name="stock" required="true"
                 [(ngModel)]="producto.stock">
@@ -111,7 +122,7 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica tu producto</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form (ngSubmit)="onSubmitEdit(productoEdit.idProducto)">
+        <form (ngSubmit)="guardarProducto(productoEdit.idProducto)">
           <div class="modal-body">
             <div class="mb-3">
               <label for="nombreProducto" class="form-label">Nombre del producto</label>
@@ -127,6 +138,19 @@
               <label for="precio" class="form-label">Precio del producto</label>
               <input type="number" class="form-control" id="precio" name="precio" required="true"
                 [(ngModel)]="productoEdit.precio">
+            </div>
+            <div class="mb-3 form-check" *ngIf="productoEdit.proveedor">
+              <label for="proveedor" class="form-label">Proveedor del producto</label>
+              <br>
+              <select name="idEdit" [(ngModel)]="productoEdit?.proveedor.idProveedor">
+                <option *ngFor="let proveedor of proveedores" [value]="proveedor.idProveedor">
+                  {{proveedor.nombreProveedor}}</option>
+              </select>
+            </div>
+            <div class="mb-3 form-check">
+              <label for="precioProv" class="form-label">Precio del proveedor</label>
+              <input type="number" class="form-control" id="precioprov" name="precioprov" required="true"
+                [(ngModel)]="productoEdit.precioprov">
             </div>
             <div class="mb-3 form-check">
               <label for="stock" class="form-label">Stock del producto</label>

@@ -4,12 +4,16 @@ import { ProductoService } from '../../services/produc/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
 import { User } from '../../user';
+import { Proveedor } from '../../proveedor';
 import { LoginComponent } from '../login/login/login.component';
+import { ProveedorListaComponent } from '../proveedor-lista/proveedor-lista.component';
+import { ProveedorService } from '../../services/proveed/proveedor.service';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
-
 
 @Component({
   selector: 'app-producto-lista',
@@ -17,24 +21,27 @@ import { LoginComponent } from '../login/login/login.component';
   styleUrl: './producto-lista.component.css'
 })
 export class ProductoListaComponent {
-  
-
   productos: Producto[];
+  proveedores: Proveedor[] ;
   userLoginOn: boolean = false;
   userData?: User;
   user: any = this.loginComp.userlog;
+
+  gananciaTotal: number;
+  porcentajeGanancia: number;
 
   constructor(private productoServicio: ProductoService,
     private enrutador: Router,
     private ruta: ActivatedRoute,
     private loginService: LoginService,
-    private loginComp: LoginComponent
+    private loginComp: LoginComponent,
+    private proveedorServicio: ProveedorService
   ) { }
 
 
   salida(): void {
     console.log("si xd.")
-      this.userLoginOn = false;
+    this.userLoginOn = false;
   }
 
 
@@ -46,15 +53,31 @@ export class ProductoListaComponent {
       }
     });
     this.obtenerProductos()
+    this.obtenerProveedores()
+
+    //Porcentaje de ganancia
+    this.gananciaTotal = this.producto.precio - this.producto.precioprov
+    this.porcentajeGanancia = (this.gananciaTotal / this.producto.precioprov) * 100;
+
   }
 
   private obtenerProductos() {
     //Consumir datos del observable (se suscribe)
     this.productoServicio.obtenerProductosLista().subscribe(
-      (datos=> {
+      (datos => {
         this.productos = datos;
       }
-    ));
+      ));
+  }
+
+  obtenerProveedores() {
+    //Consumir datos del observable (se suscribe)
+
+    this.proveedorServicio.obtenerProveedorLista().subscribe(
+      (datos => {
+        this.proveedores = datos;
+      }
+      ));
   }
 
 
@@ -69,21 +92,17 @@ export class ProductoListaComponent {
   editarProducto(id: number) {
     this.id = id;
     this.productoEdit = this.productos.find(productos => productos.idProducto === id)
-    console.log("editarProducto ", id, this.productoEdit);
+    console.log(this.productoEdit, id);
     return id;
-  }
-
-
-  onSubmitEdit(id: number) {
-    this.guardarProducto(this.id);
-    console.log("onSubmitEdit", this.id, this.productoEdit);
-
   }
 
   guardarProducto(id: number): void {
     this.productoServicio.actualizarProducto(this.id, this.productoEdit).subscribe(
+      {
+        next: (datos) => this.obtenerProductos(),
+        error: (errores) => console.log(errores)
+      }
     );
-    console.log("guardarProducto: ", this.id, this.productoEdit);
   }
 
 
@@ -91,8 +110,13 @@ export class ProductoListaComponent {
 
   //TS Agregar producto
   producto: Producto = new Producto();
+  selectedProveedor: string;
+  addProv: any = {}
+
 
   onSubmitAdd() {
+    this.addProv = this.proveedores.find(proveedores => proveedores.nombreProveedor === this.selectedProveedor)
+    this.producto.proveedor = this.addProv
     this.productoServicio.agregarProducto(this.producto).subscribe(
       {
         next: (datos) => this.obtenerProductos(),

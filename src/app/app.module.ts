@@ -10,6 +10,7 @@ import { LoginComponent } from './Pages/login/login/login.component';
 import { NavbarComponent } from './Compartido/navbar/navbar.component';
 import { UsersListComponent } from './Pages/users-list/users-list.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ProveedorListaComponent } from './Pages/proveedor-lista/proveedor-lista.component';
 
 
 
@@ -20,7 +21,8 @@ import { DataTablesModule } from 'angular-datatables';
     InicioComponent,
     LoginComponent,
     NavbarComponent,
-    UsersListComponent
+    UsersListComponent,
+    ProveedorListaComponent
     ],
   imports: [
     BrowserModule,
