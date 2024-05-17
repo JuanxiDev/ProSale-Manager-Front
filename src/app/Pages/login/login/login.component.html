@@ -1,33 +1,65 @@
-<div id="logCube" class="container h-full p-5 d-flex flex-column align-items-center rounded-3"
-  style="max-width: 400px; max-height: 600px; border: 3px solid; border-color: rgb(235,117,44); box-shadow: 0px 6px 10px 3px rgb(235,117,44);">
-
-  <img src="././././assets/Images/vector.png" alt="user" class="w-50 border rounded-circle"
-    style="border: 3px solid red; border-color: rgb(235,117,44);">
-
-  <p class="text-danger">Inicia tu sesión</p>
-
-  <form class="bg-white" style="color: rgb(235,117,44);" (ngSubmit)="login2(username, passcode)">
+<div id="logCube" class="container mh-100 mw-100 d-flex justify-content-center">
+  <form
+    class="bg-white p-5 border rounded-start w-25 sombra"
+    (ngSubmit)="login2(username, passcode)"
+  >
     <div class="mb-3">
-      <input (click)="userNotFound = false" type="text" class="form-control" name="usuario" #userInput="ngModel" [(ngModel)]="username" 
-        placeholder="Ingrese su usuario" required>
-        <div *ngIf="!username && (userInput.touched || userNotFound)" class="alert alert-danger">El usuario es requerido.</div>
-        <div *ngIf="this.userNotFound && username" class="alert alert-danger">
-          Usuario no encontrado
-        </div>
+      <input
+        (click)="userNotFound = false"
+        type="text"
+        class="border w-100 rounded-1 p-3 mt-4 text-white"
+        style="background-color: rgb(165, 165, 165); outline: none"
+        name="usuario"
+        #userInput="ngModel"
+        [(ngModel)]="username"
+        placeholder="Nombre de usuario"
+        required
+      />
+      <div
+        *ngIf="!username && (userInput.touched || userNotFound)"
+        class="alert alert-danger"
+      >
+        El usuario es requerido.
+      </div>
+      <div *ngIf="this.userNotFound && username" class="alert alert-danger">
+        Usuario no encontrado
+      </div>
     </div>
     <div class="mb-3">
-      <input (click)="passNotFound = false" type="password" class="form-control" name="contrasena" #passInput="ngModel" [(ngModel)]="passcode"
-        placeholder="Ingrese su Contraseña" required>
-        <div *ngIf="!passcode && (passInput.touched || this.passNotFound)" class="alert alert-danger">Se requiere una contraseña.</div>
-        <div *ngIf="this.passNotFound && passcode " class="alert alert-danger">
-          Contraseña incorrecta
-        </div>
+      <input
+        (click)="passNotFound = false"
+        type="password"
+        class="border border-bottom border-red w-100 rounded-1 p-3 text-white"
+        style="background-color: rgb(165, 165, 165); outline: none"
+        name="contrasena"
+        #passInput="ngModel"
+        [(ngModel)]="passcode"
+        placeholder="Contraseña"
+        required
+      />
+      <div
+        *ngIf="!passcode && (passInput.touched || this.passNotFound)"
+        class="alert alert-danger"
+      >
+        Se requiere una contraseña.
+      </div>
+      <div *ngIf="this.passNotFound && passcode" class="alert alert-danger">
+        Contraseña incorrecta
+      </div>
       <div class="d-flex justify-content-center align-items-center m-3">
-        <button type="submit" class="btn border border-white text-white"
-          style="background-color: rgb(235,117,44);">probar</button>
+        <button
+          type="submit"
+          class="btn border border-white text-white text-uppercase mb-3"
+          style="background-color: rgb(165, 165, 165)"
+        >
+          entrar
+        </button>
       </div>
     </div>
   </form>
-
-
+  <div
+    class="p-3 d-flex justify-content-center align-items-center rounded-end loginDivClass sombra"
+  >
+    <p class="text-white fs-2">Login</p>
+  </div>
 </div>
