@@ -1,9 +1,9 @@
 .ng-valid:not(form).ng-touched {
-  border-bottom: 5px solid green;
+  border: 5px solid green;
 }
 
 .ng-invalid:not(form).ng-touched {
-  border-bottom: 5px solid red;
+  border: 5px solid red;
 }
 
 #logCube {
@@ -11,13 +11,8 @@
   margin-bottom: 10%;
 }
 
-::placeholder {
-  color: white;
-}
-
-.loginDivClass {
+.divClass {
   width: 150px;
-  background: rgb(128, 127, 127);
   background: linear-gradient(
     180deg,
     rgba(128, 127, 127, 1) 0%,

@@ -1,14 +1,14 @@
 <div id="logCube" class="container mh-100 mw-100 d-flex justify-content-center">
   <form
-    class="bg-white p-5 border rounded-start w-25 sombra"
+    class="p-5 border border-1 border-dark rounded-start w-25 sombra"
     (ngSubmit)="login2(username, passcode)"
   >
     <div class="mb-3">
       <input
         (click)="userNotFound = false"
         type="text"
-        class="border w-100 rounded-1 p-3 mt-4 text-white"
-        style="background-color: rgb(165, 165, 165); outline: none"
+        class="border-1 w-100 rounded-1 p-3 mt-4"
+        style="outline: none"
         name="usuario"
         #userInput="ngModel"
         [(ngModel)]="username"
@@ -29,8 +29,8 @@
       <input
         (click)="passNotFound = false"
         type="password"
-        class="border border-bottom border-red w-100 rounded-1 p-3 text-white"
-        style="background-color: rgb(165, 165, 165); outline: none"
+        class="border-1 w-100 rounded-1 p-3"
+        style="outline: none"
         name="contrasena"
         #passInput="ngModel"
         [(ngModel)]="passcode"
@@ -43,14 +43,13 @@
       >
         Se requiere una contraseña.
       </div>
-      <div *ngIf="this.passNotFound && passcode" class="alert alert-danger">
+      <div *ngIf="this.passNotFound && passcode" class="alert alert-danger m-1">
         Contraseña incorrecta
       </div>
       <div class="d-flex justify-content-center align-items-center m-3">
         <button
           type="submit"
-          class="btn border border-white text-white text-uppercase mb-3"
-          style="background-color: rgb(165, 165, 165)"
+          class="btn btn-outline-dark text-uppercase mb-3"
         >
           entrar
         </button>
@@ -58,7 +57,7 @@
     </div>
   </form>
   <div
-    class="p-3 d-flex justify-content-center align-items-center rounded-end loginDivClass sombra"
+    class="border border-1 border-dark p-3 d-flex justify-content-center align-items-center rounded-end divClass sombra"
   >
     <p class="text-white fs-2">Login</p>
   </div>
