@@ -5,27 +5,7 @@ ul.foot li {
 }
 
 .divClass {
-  background: linear-gradient(
-    180deg,
-    rgba(128, 127, 127, 1) 0%,
-    rgba(0, 0, 0, 1) 69%
-  );
-}
-
-.divClass2 {
-  background: linear-gradient(
-    90deg,
-    rgba(128, 127, 127, 1) 0%,
-    rgba(0, 0, 0, 1) 69%
-  );
-}
-
-.divClass3 {
-  background: linear-gradient(
-    270deg,
-    rgba(128, 127, 127, 1) 0%,
-    rgba(0, 0, 0, 1) 69%
-  );
+  background: rgb(231, 232, 238);
 }
 
 .sombra {
