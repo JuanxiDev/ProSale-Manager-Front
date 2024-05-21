@@ -1,13 +1,18 @@
 <div id="logCube" class="container mh-100 mw-100 d-flex justify-content-center">
   <form
-    class="p-5 border border-1 border-dark rounded-start w-25 sombra"
+    class="p-5 border border-1 rounded-4 w-auto sombra d-flex flex-column justify-content-center align-items-center fw-bold"
+    style="background: rgb(231, 232, 238);"
     (ngSubmit)="login2(username, passcode)"
   >
-    <div class="mb-3">
+    <div class="fs-1 fw-bold d-flex text-center m-4">
+      <p class="text-center w-100">ProSale Manager</p>
+    </div>
+    <div class="mb-3 w-100">
+      <p>Usuario</p>
       <input
         (click)="userNotFound = false"
         type="text"
-        class="border-1 w-100 rounded-1 p-3 mt-4"
+        class="border w-100 rounded-4 p-3"
         style="outline: none"
         name="usuario"
         #userInput="ngModel"
@@ -25,40 +30,33 @@
         Usuario no encontrado
       </div>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 w-100">
+      <p>Contraseña</p>
       <input
         (click)="passNotFound = false"
         type="password"
-        class="border-1 w-100 rounded-1 p-3"
+        class="border w-100 rounded-4 p-3"
         style="outline: none"
         name="contrasena"
         #passInput="ngModel"
         [(ngModel)]="passcode"
         placeholder="Contraseña"
         required
-      />
-      <div
-        *ngIf="!passcode && (passInput.touched || this.passNotFound)"
-        class="alert alert-danger"
-      >
-        Se requiere una contraseña.
-      </div>
+        />
+        <div
+          *ngIf="!passcode && (passInput.touched || this.passNotFound)"
+          class="alert alert-danger"
+        >
+          Se requiere una contraseña.
+        </div>
       <div *ngIf="this.passNotFound && passcode" class="alert alert-danger m-1">
         Contraseña incorrecta
       </div>
       <div class="d-flex justify-content-center align-items-center m-3">
-        <button
-          type="submit"
-          class="btn btn-outline-dark text-uppercase mb-3"
-        >
+        <button type="submit" class="btn btn-primary text-uppercase">
           entrar
         </button>
       </div>
     </div>
   </form>
-  <div
-    class="border border-1 border-dark p-3 d-flex justify-content-center align-items-center rounded-end divClass sombra"
-  >
-    <p class="text-white fs-2">Login</p>
-  </div>
 </div>
