@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="inicio">ProSale Manager</a>
+    <a class="navbar-brand" [routerLink]="['/inicio']">ProSale Manager</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,24 +8,24 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="inicio" routerLinkActive="active">Inicio</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['/inicio']" routerLinkActive="active">Inicio</a>
         </li>
         <li class="nav-item" *ngIf="userLoginOn">
-          <a class="nav-link" routerLink="productos" routerLinkActive="active">Productos</a>
+          <a class="nav-link" [routerLink]="['/productos']" routerLinkActive="active">Productos</a>
         </li>
         <li class="nav-item" *ngIf="userLoginOn">
-          <a class="nav-link" routerLink="proveedores" routerLinkActive="active">Proveedores</a>
+          <a class="nav-link" [routerLink]="['/proveedores']" routerLinkActive="active">Proveedores</a>
         </li>
         <li class="nav-item" *ngIf="userLoginOn">
-          <a class="nav-link" routerLink="users" routerLinkActive="active">Usuarios</a>
+          <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active">Usuarios</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Cuenta
           </a>
           <ul class="dropdown-menu">
-            <li *ngIf="userLoginOn"><button type="button" (click)="logout()" class="dropdown-item" routerLink="login" routerLinkActive="active">Salir</button></li>
-            <li *ngIf="!userLoginOn"><a class="dropdown-item" routerLink="login" routerLinkActive="active">Iniciar
+            <li *ngIf="userLoginOn"><button type="button" (click)="logout()" class="dropdown-item" [routerLink]="['/login']" routerLinkActive="active">Salir</button></li>
+            <li *ngIf="!userLoginOn"><a class="dropdown-item" [routerLink]="['/login']" routerLinkActive="active">Iniciar
                 sesión</a></li>
           </ul>
         </li>
