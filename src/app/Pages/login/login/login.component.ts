@@ -6,6 +6,7 @@ import { LoginRequest } from '../../../services/auth/login.request';
 import { User } from '../../../user';
 import { UsuarioService } from '../../../services/user/usuario.service';
 import { UserService } from '../../../services/user/userlog.service';
+import { AppComponent } from '../../../app.component'
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +26,13 @@ export class LoginComponent {
     private router: Router,
     private loginService: LoginService,
     private usuarioServicio: UsuarioService,
-    private userService: UserService
+    private userService: UserService,
+    private appComp: AppComponent
   ) { this.usuarios = []; }
 
 
   ngOnInit() {
+    this.appComp.mostrarNavbar = false
     this.usuarioServicio.obtenerUsuariosLista().subscribe(
       (datos => {
         this.usuarios = datos;
