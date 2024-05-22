@@ -11,6 +11,7 @@ import { NavbarComponent } from './Compartido/navbar/navbar.component';
 import { UsersListComponent } from './Pages/users-list/users-list.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ProveedorListaComponent } from './Pages/proveedor-lista/proveedor-lista.component';
+import { FooterComponent } from './Compartido/footer/footer.component'
 
 
 
@@ -22,7 +23,8 @@ import { ProveedorListaComponent } from './Pages/proveedor-lista/proveedor-lista
     LoginComponent,
     NavbarComponent,
     UsersListComponent,
-    ProveedorListaComponent
+    ProveedorListaComponent,
+    FooterComponent
     ],
   imports: [
     BrowserModule,

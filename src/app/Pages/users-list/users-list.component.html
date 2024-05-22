@@ -11,7 +11,7 @@
       Bienvenido {{userlog.name}}
     </h3>
     <h3 *ngIf="userlog.rol === 'Administrador' ">
-      administra tus Vendedores. 
+      administra tus Vendedores.
     </h3>
 
     <br>
@@ -24,7 +24,6 @@
           <th scope="col">Nombre</th>
           <th scope="col">Apellido</th>
           <th scope="col">Teléfono</th>
-          <th scope="col">Contraseña</th>
           <th scope="col">Rol</th>
           <th scope="col">Estado</th>
           <th *ngIf="userlog.rol === 'Administrador' " scope="col">Funciones</th>
@@ -37,7 +36,6 @@
           <td>{{usuario.name}}</td>
           <td>{{usuario.lastname}}</td>
           <td>{{usuario.telefono}}</td>
-          <td>{{usuario.password}}</td>
           <td>{{usuario.rol}}</td>
           <td>{{usuario.status}}</td>
           <td class="text-center" *ngIf="userlog.rol === 'Administrador' ">
@@ -59,6 +57,8 @@
       data-bs-toggle="modal" data-bs-target="#modalAdd" *ngIf="userlog.rol === 'Administrador' ">
       Agregar nuevo usuario
     </button>
+
+
 
   </div>
 
@@ -176,20 +176,9 @@
 
   <br>
   <br>
-  <div class="d-flex justify-content-center">
-    <footer style="width: 25%;">
-      <div class="d-flex justify-content-evenly"><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i
-            class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-facebook"></i></a></div>
-      <ul class=" foot align-items-center ">
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
-      <p class="d-flex justify-content-center">ProSale Manager © 2024</p>
-    </footer>
-  </div>
-
 
 </div>
+
+<footer *ngIf="userLoginOn">
+  <app-footer></app-footer>
+</footer>
