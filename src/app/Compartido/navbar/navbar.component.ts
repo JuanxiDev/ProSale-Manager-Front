@@ -11,10 +11,6 @@ export class NavbarComponent {
 
   constructor(private loginService: LoginService) { }
 
-
-  /* ngOnDestroy(): void {
-    this.loginService.userLogued.unsubscribe()
-  } */
   
   ngOnInit(): void {
     this.loginService.userLogued.subscribe(

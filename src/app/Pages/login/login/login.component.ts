@@ -49,8 +49,8 @@ export class LoginComponent {
   //prueba base de datos
 
   usuarios: User[];
-  username: string;
-  passcode: string;
+  username: string = "";
+  passcode: string = "";
   userNotFound: boolean = false;
   passNotFound: boolean = false;
   userlog: any = {};
