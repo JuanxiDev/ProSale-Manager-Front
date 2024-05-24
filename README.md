@@ -1,5 +1,7 @@
 # Proyecto Web y Móvil para el Control de Inventario y Personal
 
+<p align="center"><img src="https://github.com/jeanlol0123/Ventas.facil/assets/111474574/ed525961-c2cf-46ab-bf2d-e3a630b82688)"/></p>
+
 Este proyecto ha sido desarrollado como un PIA (Proyecto Integrador de Aula) para facilitar el control de inventario y la gestión de personal tanto en plataformas web como móviles. Utiliza una combinación de tecnologías modernas para proporcionar una interfaz intuitiva y eficiente.
 
 ## Tecnologías Utilizadas
@@ -11,6 +13,8 @@ Este proyecto se basa en una variedad de tecnologías para asegurar un rendimien
 - **TypeScript:** Un superconjunto tipado de JavaScript que se compila a JavaScript plano, proporcionando una mejor experiencia de desarrollo y mantenimiento de código.
   
 - **Bootstrap 5:** Un framework de CSS para desarrollar con rapidez y facilidad aplicaciones web y móviles con diseños responsive y componentes de interfaz de usuario.
+
+- **Ionic:** un framework de código abierto para el desarrollo de aplicaciones aplicaciones nativas para iOS y Android, así como para aplicaciones web progresivas.
 
 ## Funcionalidades
 
