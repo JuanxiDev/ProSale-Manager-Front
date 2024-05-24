@@ -14,6 +14,8 @@ Este proyecto se basa en una variedad de tecnologías para asegurar un rendimien
   
 - **Bootstrap 5:** Un framework de CSS para desarrollar con rapidez y facilidad aplicaciones web y móviles con diseños responsive y componentes de interfaz de usuario.
 
+- **Ionic:** un framework de código abierto para el desarrollo de aplicaciones aplicaciones nativas para iOS y Android, así como para aplicaciones web progresivas.
+
 ## Funcionalidades
 
 El proyecto incluye varias funcionalidades clave diseñadas para optimizar el control de inventario y la gestión de personal. Estas funcionalidades incluyen:
