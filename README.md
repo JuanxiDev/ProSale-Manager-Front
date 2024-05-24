@@ -1,5 +1,7 @@
 # Proyecto Web y Móvil para el Control de Inventario y Personal
 
+<p align="center"><img src="https://github.com/jeanlol0123/Ventas.facil/assets/111474574/ed525961-c2cf-46ab-bf2d-e3a630b82688)"/></p>
+
 Este proyecto ha sido desarrollado como un PIA (Proyecto Integrador de Aula) para facilitar el control de inventario y la gestión de personal tanto en plataformas web como móviles. Utiliza una combinación de tecnologías modernas para proporcionar una interfaz intuitiva y eficiente.
 
 ## Tecnologías Utilizadas
