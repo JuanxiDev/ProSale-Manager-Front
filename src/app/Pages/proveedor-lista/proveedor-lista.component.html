@@ -29,7 +29,7 @@
               <th id="precio">Dirección</th>
               <th id="proveedor">Teléfono</th>
               <th id="precioProv">Celular</th>
-              <th id="buttons">Funciones</th>
+              <th *ngIf="userlog.rol === 'Administrador' " scope="col">Funciones</th>
             </tr>
           </thead>
           <tbody>
@@ -40,7 +40,7 @@
               <td>{{proveedor.direccion}}</td>
               <td>{{proveedor.telefono}}</td>
               <td>{{proveedor.celular}}</td>
-              <td class="text-center">
+              <td class="text-center" *ngIf="userlog.rol === 'Administrador'">
                 <div>
                   <button (click)="editarProveedor(proveedor.idProveedor)" type="button"
                     class="btn btn-warning btn-sm me-3" data-bs-toggle="modal"
@@ -57,7 +57,7 @@
 
       <!-- Boton nuevo proveedor -->
       <button type="button" class="btn btn-primary my-2" data-bs-toggle="modal"
-        data-bs-target="#modalAdd">
+        data-bs-target="#modalAdd" *ngIf="userlog.rol === 'Administrador' ">
         Agregar proveedor
       </button>
 

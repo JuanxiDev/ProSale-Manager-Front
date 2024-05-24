@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
 import { User } from '../../user';
 import { LoginComponent } from '../login/login/login.component';
+import { UserService } from '../../services/user/userlog.service'
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +21,14 @@ export class ProveedorListaComponent {
   userLoginOn: boolean = false;
   userData?: User;
   user: any = this.loginComp.userlog;
+  userlog: any;
 
   constructor(private proveedorServicio: ProveedorService,
     private enrutador: Router,
     private ruta: ActivatedRoute,
     private loginService: LoginService,
-    private loginComp: LoginComponent
+    private loginComp: LoginComponent,
+    private userService: UserService
   ) { }
 
 
@@ -43,6 +46,8 @@ export class ProveedorListaComponent {
       }
     });
     this.obtenerProveedores()
+    this.userlog = this.userService.getUserlog();
+    console.log(this.userlog);
   }
 
   obtenerProveedores() {
