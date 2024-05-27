@@ -9,10 +9,9 @@ import { ProveedorListaComponent } from "./Pages/proveedor-lista/proveedor-lista
 
 //http:localhost:4200/productos
 const routes: Routes = [
-  {path: 'inicio', component : InicioComponent},
+  {path: '', component : InicioComponent},
   {path: 'productos', component : ProductoListaComponent},
   {path: 'login', component : LoginComponent},
-  {path: '',redirectTo: 'inicio', pathMatch: 'full'},
   {path: 'users', component : UsersListComponent},
   {path: 'proveedores', component : ProveedorListaComponent}
 ];
