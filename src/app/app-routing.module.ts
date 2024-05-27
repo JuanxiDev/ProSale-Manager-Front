@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'inicio', component : InicioComponent},
   {path: 'productos', component : ProductoListaComponent},
   {path: 'login', component : LoginComponent},
-  {path: ' ',redirectTo: 'inicio', pathMatch: 'full'},
+  {path: '',redirectTo: 'inicio', pathMatch: 'full'},
   {path: 'users', component : UsersListComponent},
   {path: 'proveedores', component : ProveedorListaComponent}
 ];
