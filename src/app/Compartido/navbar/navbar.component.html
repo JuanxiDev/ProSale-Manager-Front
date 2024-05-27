@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['']" routerLinkActive="active">Inicio</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['/inicio']" routerLinkActive="active">Inicio</a>
         </li>
         <li class="nav-item" *ngIf="userLoginOn">
           <a class="nav-link" [routerLink]="['/productos']" routerLinkActive="active">Productos</a>
@@ -20,9 +20,9 @@
           <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active">Usuarios</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Cuenta
-          </a>
+          </button>
           <ul class="dropdown-menu">
             <li *ngIf="userLoginOn"><button type="button" (click)="logout()" class="dropdown-item" [routerLink]="['/login']" routerLinkActive="active">Salir</button></li>
             <li *ngIf="!userLoginOn"><a class="dropdown-item" [routerLink]="['/login']" routerLinkActive="active">Iniciar

@@ -74,7 +74,7 @@ export class LoginComponent {
             },
             complete: () => {
               console.info("Login correcto");
-              this.router.navigateByUrl('')
+              this.router.navigateByUrl('/inicio')
             }
           })
         }
