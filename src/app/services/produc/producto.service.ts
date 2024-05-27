@@ -12,7 +12,7 @@ import { Producto } from '../../producto';
 
 export class ProductoService {
 
-  private urlBase ="http://localhost:8080/inventario-app/productos";
+  private urlBase ="https://prosale-managerback.azurewebsites.net/inventario-app/productos";
 
   constructor(private clienteHttp: HttpClient) { }
 

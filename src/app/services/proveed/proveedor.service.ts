@@ -11,7 +11,7 @@ import { Proveedor } from '../../proveedor';
 
 export class ProveedorService {
 
-  private urlBase ="http://localhost:8080/inventario-app/proveedores";
+  private urlBase ="https://prosale-managerback.azurewebsites.net/inventario-app/proveedores";
 
   constructor(private clienteHttp: HttpClient) { }
 
