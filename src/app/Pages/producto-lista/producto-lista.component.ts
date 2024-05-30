@@ -27,6 +27,17 @@ export class ProductoListaComponent {
   userData?: User;
   user: any = this.loginComp.userlog;
 
+  modalAdd: boolean = false
+  modalEdit: boolean = false
+
+  setAdd(isOpen:boolean){
+    this.modalAdd = isOpen  
+  }
+
+  setEdit(isOpen:boolean){
+    this.modalEdit = isOpen  
+  }
+
   gananciaTotal: number;
   porcentajeGanancia: number;
 
@@ -87,6 +98,7 @@ export class ProductoListaComponent {
 
   cancel() {
     this.obtenerProductos()
+    this.modalEdit = false
   }
 
   editarProducto(id: number) {
@@ -103,6 +115,7 @@ export class ProductoListaComponent {
         error: (errores) => console.log(errores)
       }
     );
+    this.modalEdit = false
   }
 
 
@@ -115,6 +128,7 @@ export class ProductoListaComponent {
 
 
   onSubmitAdd() {
+    this.modalEdit = false
     this.addProv = this.proveedores.find(proveedores => proveedores.nombreProveedor === this.selectedProveedor)
     this.producto.proveedor = this.addProv
     this.productoServicio.agregarProducto(this.producto).subscribe(
