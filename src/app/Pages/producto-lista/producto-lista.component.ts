@@ -32,10 +32,12 @@ export class ProductoListaComponent {
 
   setAdd(isOpen:boolean){
     this.modalAdd = isOpen  
+    console.log("Boton funciona")
   }
 
   setEdit(isOpen:boolean){
     this.modalEdit = isOpen  
+    console.log("Boton funciona")
   }
 
   gananciaTotal: number;
