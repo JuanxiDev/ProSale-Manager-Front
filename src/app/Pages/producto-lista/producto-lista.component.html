@@ -45,7 +45,7 @@
               <td>{{producto.stock}}</td>
               <td class="text-center">
                 <div>
-                  <button (click)="editarProducto(producto.idProducto)" type="button"
+                  <button (click)="editarProducto(producto.idProducto);setEdit(true)" type="button"
                     class="btn btn-warning btn-sm me-3" data-bs-toggle="modal"
                     data-bs-target="#modalEdit">Editar</button>
                   <button (click)="eliminarProducto(producto.idProducto)" type="button"
@@ -59,20 +59,24 @@
 
       <!-- Boton nuevo producto -->
       <button type="button" class="btn btn-primary my-2" data-bs-toggle="modal"
-        data-bs-target="#modalAdd">
+        data-bs-target="#modalAdd" (click)="setAdd(true)">
         Agregar producto
       </button>
 
     </div>
 
     <!----- Modal Agregar Producto ----->
+<<<<<<< HEAD
     <div class="modal fade" id="modalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+=======
+    <div class="modal fade" id="modalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="modalAdd">
+>>>>>>> ba8de4dce9e61bd9ccfa28d9763e6ef60bdec1d9
       <div class="modal-dialog">
         <div class="modal-content">
 
           <div class="modal-header" style="background: rgb(231, 232, 238);">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresa tu producto</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" (click)="setAdd(false)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <form #formAdd (ngSubmit)="onSubmitAdd()">
@@ -113,7 +117,7 @@
             </div>
 
             <div class="modal-footer" style="background: rgb(231, 232, 238);">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="setAdd(false)">Cerrar</button>
               <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Agregar producto</button>
             </div>
           </form>
@@ -124,13 +128,13 @@
 
 
     <!----- Modal Editar Producto ----->
-    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="modalEdit">
       <div class="modal-dialog">
         <div class="modal-content">
 
           <div class="modal-header" style="background: rgb(231, 232, 238);">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica tu producto</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" (click)="setEdit(false)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <form (ngSubmit)="guardarProducto(productoEdit.idProducto)">
@@ -171,7 +175,7 @@
             </div>
 
             <div class="modal-footer" style="background: rgb(231, 232, 238);">
-              <button type="button" (click)="cancel()" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="cancel()" class="btn btn-danger" data-bs-dismiss="modal" (click)="setEdit(false)">Cerrar</button>
               <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar producto</button>
             </div>
           </form>
