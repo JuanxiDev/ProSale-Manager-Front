@@ -11,7 +11,10 @@ import { NavbarComponent } from './Compartido/navbar/navbar.component';
 import { UsersListComponent } from './Pages/users-list/users-list.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ProveedorListaComponent } from './Pages/proveedor-lista/proveedor-lista.component';
-import { FooterComponent } from './Compartido/footer/footer.component'
+import { FooterComponent } from './Compartido/footer/footer.component';
+import { FacturaComponent } from './Pages/factura/factura.component';
+import { RegistroComponent } from './Pages/registro/registro.component';
+import { DashboardComponent } from './Pages/dashboard/dashboard.component'
 
 
 
@@ -24,7 +27,10 @@ import { FooterComponent } from './Compartido/footer/footer.component'
     NavbarComponent,
     UsersListComponent,
     ProveedorListaComponent,
-    FooterComponent
+    FooterComponent,
+    FacturaComponent,
+    RegistroComponent,
+    DashboardComponent
     ],
   imports: [
     BrowserModule,
