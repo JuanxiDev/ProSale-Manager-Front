@@ -5,6 +5,9 @@ import { InicioComponent } from './Pages/inicio/inicio.component';
 import { LoginComponent } from './Pages/login/login/login.component';
 import { UsersListComponent } from './Pages/users-list/users-list.component';
 import { ProveedorListaComponent } from "./Pages/proveedor-lista/proveedor-lista.component";
+import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { FacturaComponent } from './Pages/factura/factura.component';
+import { RegistroComponent } from './Pages/registro/registro.component';
 
 
 //http:localhost:4200/productos
@@ -13,7 +16,10 @@ const routes: Routes = [
   {path: 'productos', component : ProductoListaComponent},
   {path: 'login', component : LoginComponent},
   {path: 'users', component : UsersListComponent},
-  {path: 'proveedores', component : ProveedorListaComponent}
+  {path: 'proveedores', component : ProveedorListaComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'facturacion', component: FacturaComponent},
+  {path: 'registro', component: RegistroComponent}
 ];
 
 @NgModule({
