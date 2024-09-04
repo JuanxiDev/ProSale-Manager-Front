@@ -7,6 +7,7 @@ import { User } from '../../../user';
 import { UsuarioService } from '../../../services/user/usuario.service';
 import { UserService } from '../../../services/user/userlog.service';
 import { AppComponent } from '../../../app.component'
+import { log } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,8 @@ export class LoginComponent {
 
 
   ngOnInit() {
+    console.log("el onInit funciona");
+    
     this.appComp.mostrarNavbar = false
     this.usuarioServicio.obtenerUsuariosLista().subscribe(
       (datos => {
