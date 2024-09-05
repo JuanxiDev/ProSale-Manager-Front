@@ -14,7 +14,7 @@ import { RegistroComponent } from './Pages/registro/registro.component';
 const routes: Routes = [
   {path: '', component : InicioComponent},
   {path: 'productos', component : ProductoListaComponent},
-  {path: 'login', component : LoginComponent},
+  {path: 'login', component : LoginComponent, runGuardsAndResolvers: 'always'},
   {path: 'users', component : UsersListComponent},
   {path: 'proveedores', component : ProveedorListaComponent},
   {path: 'dashboard', component: DashboardComponent},
