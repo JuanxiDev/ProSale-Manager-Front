@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/auth/login.service';
+import { UserService } from '../../services/user/userlog.service'
+
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +10,14 @@ import { LoginService } from '../../services/auth/login.service';
 })
 export class NavbarComponent {
   userLoginOn: boolean = false;
+  userlog: any;
 
-  constructor(private loginService: LoginService) { }
 
-  
+  constructor(private loginService: LoginService,
+    private userService: UserService
+  ) { }
+
+
   ngOnInit(): void {
     this.loginService.userLogued.subscribe(
       {
@@ -20,10 +26,11 @@ export class NavbarComponent {
         }
       }
     )
+    this.userlog = this.userService.getUserlog();
   }
 
 
-  logout(){
+  logout() {
     this.loginService.userLogued.next(false)
     console.log("llega")
   }

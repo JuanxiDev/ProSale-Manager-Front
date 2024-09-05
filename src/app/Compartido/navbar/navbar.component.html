@@ -1,6 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(76, 137, 187);">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['']">ProSale Manager</a>
+    <a [routerLink]="['']">
+      <img src="../../assets/Images/LogoBYN.png" 
+      alt="logo"
+      style="width: 70px; margin-right: 10px;">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,13 +32,16 @@
         <li class="nav-item" *ngIf="userLoginOn">
           <a class="nav-link" [routerLink]="['/registro']" routerLinkActive="active">Registros de ventas</a>
         </li>
-        <li class="nav-item" *ngIf="userLoginOn">
-          <a (click)="logout()" class="nav-link" [routerLink]="['/login']"
-            routerLinkActive="active">Salir</a>
+        <li class="nav-item ms-auto" *ngIf="userLoginOn">
+          <a (click)="logout()" class="nav-link" [routerLink]="['/login']" routerLinkActive="active">
+            <i class="navbar-brand bi bi-person-fill-check" style="margin-right: 5px;"></i> {{userlog.name}} | 
+            <i class="navbar-brand bi bi-box-arrow-right" style="margin-right: 5px; margin-left: 5px;"></i> Salir
+          </a>
         </li>
-        <li class="nav-item" *ngIf="!userLoginOn">
-          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Iniciar
-            sesión</a>
+        <li class="nav-item ms-auto" *ngIf="!userLoginOn">
+          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">
+            <i class="navbar-brand bi bi-person-fill-lock" style="margin-right: 5px;"></i>Iniciar sesión
+          </a>
         </li>
       </ul>
     </div>
