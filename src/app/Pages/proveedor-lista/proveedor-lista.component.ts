@@ -34,7 +34,7 @@ export class ProveedorListaComponent {
 
   salida(): void {
     console.log("si xd.")
-      this.userLoginOn = false;
+    this.userLoginOn = false;
   }
 
 
@@ -52,12 +52,12 @@ export class ProveedorListaComponent {
 
   obtenerProveedores() {
     //Consumir datos del observable (se suscribe)
-    
+
     this.proveedorServicio.obtenerProveedorLista().subscribe(
-      (datos=> {
+      (datos => {
         this.proveedores = datos;
       }
-    ));
+      ));
   }
 
 

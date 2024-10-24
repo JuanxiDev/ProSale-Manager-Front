@@ -1,1 +1,97 @@
 <app-navbar></app-navbar>
+
+
+<div class="d-flex justify-content-center">
+
+    <div class="container text-center my-3" *ngIf="!userLoginOn">
+        <p>Debes iniciar sesión</p>
+    </div>
+    <div class="my-5 d-flex align-items-center table-responsive" *ngIf="userLoginOn">
+
+        <div class="d-flex flex-column align-items-center p-2 rounded-3" style="background: rgb(231, 232, 238);">
+
+            <h3>
+                Registro de Facturas.
+            </h3>
+
+            <img src="../../assets/Images/cart4.svg" alt="target" style="width: 100px;">
+
+
+            <br>
+
+            <div class="widhdeldiv">
+                <table class="table table-bordered border-secundary table-hover align-middle">
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th id="id">Id</th>
+                            <th id="name">Usuario</th>
+                            <th id="fecha">Fecha</th>
+                            <th id="total">Total</th>
+                            <th id="functions">Funciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detalle of detalles">
+                            <td>{{detalle.factura.idFactura}}</td>
+                            <td>{{detalle.factura.usuario.username}}</td>
+                            <td>{{detalle.factura.fecha}}</td>
+                            <td>{{detalle.factura.total}}</td>
+                            <td class="text-center" *ngIf="userlog.rol === 'Administrador'">
+                                <div>
+                                    <button (click)="ver_detalle(detalle.factura.idFactura)" type="button"
+                                        class="btn btn-warning btn-sm me-3" data-bs-toggle="modal"
+                                        data-bs-target="#modalDetail">Ver Detalle</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!----- Modal Detalles ----->
+        <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background: rgb(231, 232, 238);">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica tu proveedor</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="nombreProveedor" class="form-label">Id Venta</label>
+                                <input type="text" class="form-control" id="idFactura" name="idFactura"
+                                    required="true" [(ngModel)]="detalleEdit.factura.idFactura">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nit" class="form-label">Nit del Proveedor</label>
+                                <input type="number" class="form-control" id="nit" name="nit" required="true"
+                                    [(ngModel)]="detalleEdit.factura.fecha">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <label for="direccion" class="form-label">Dirección del proveedor</label>
+                                <input type="text" class="form-control" id="direccion" name="direccion" required="true"
+                                    [(ngModel)]="detalleEdit.factura.fecha">
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="background: rgb(231, 232, 238);">
+                            <button type="button" (click)="cancel()" class="btn btn-danger"
+                                data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar
+                                proveedor</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!----- Modal ----->
+
+    </div>
+</div>
+
+<footer *ngIf="userLoginOn">
+    <app-footer></app-footer>
+</footer>
