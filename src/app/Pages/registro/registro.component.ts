@@ -48,6 +48,7 @@ export class RegistroListaComponent {
     this.obtenerDetalles()
     this.userlog = this.userService.getUserlog();
     console.log(this.userlog);
+    console.log(this.detalle.idDetalle)
   }
 
   obtenerDetalles() {

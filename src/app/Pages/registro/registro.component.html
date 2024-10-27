@@ -32,13 +32,13 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let detalle of detalles">
-                            <td>{{detalle.idDetalle}}</td>
+                            <td>{{detalle.factura.idFactura}}</td>
                             <td>{{detalle.factura.usuario.username}}</td>
                             <td>{{detalle.factura.fecha}}</td>
                             <td>{{detalle.factura.total}}</td>
                             <td class="text-center">
                                 <div>
-                                    <button (click)="ver_detalle(detalle.idDetalle)" type="button"
+                                    <button (click)="ver_detalle(detalle.factura.idFactura)" type="button"
                                         class="btn btn-warning btn-sm me-3" data-bs-toggle="modal"
                                         data-bs-target="#modalDetail">Ver Detalle </button>
                                 </div>
