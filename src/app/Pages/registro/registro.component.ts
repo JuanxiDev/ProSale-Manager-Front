@@ -1,6 +1,8 @@
 import { Component, Injectable } from '@angular/core';
 import { Detalle } from '../../detalle';
+import { Factura } from '../../factura';
 import { DetalleService } from '../../services/detalle/detalle.service';
+import { FacturaService } from '../../services/factura/factura.detalle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
 import { User } from '../../user';
@@ -18,12 +20,14 @@ import { UserService } from '../../services/user/userlog.service';
 })
 export class RegistroListaComponent {
   detalles: Detalle[];
+  facturas: Factura[];
   userLoginOn: boolean = false;
   userData?: User;
   user: any = this.loginComp.userlog;
   userlog: any;
 
   constructor(private detalleServicio: DetalleService,
+    private facturaServicio: FacturaService,
     private enrutador: Router,
     private ruta: ActivatedRoute,
     private loginService: LoginService,
@@ -59,6 +63,15 @@ export class RegistroListaComponent {
         this.detalles = datos;
       }
     ));
+  }
+
+  obtenerFacturas() {
+
+    this.facturaServicio.obtenerProveedorLista().subscribe(
+      (datos => {
+        this.facturas = datos;
+      })
+    )
   }
 
   //TS Agregar Factura

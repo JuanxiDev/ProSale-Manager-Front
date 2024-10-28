@@ -6,7 +6,6 @@ import { LoginService } from '../../services/auth/login.service';
 import { User } from '../../user';
 import { Proveedor } from '../../proveedor';
 import { LoginComponent } from '../login/login/login.component';
-import { ProveedorListaComponent } from '../proveedor-lista/proveedor-lista.component';
 import { ProveedorService } from '../../services/proveed/proveedor.service';
 
 
