@@ -72,7 +72,7 @@ export class RegistroListaComponent {
       })
     );
   }
-  factura: Factura = new Factura()
+  factura: Factura = new Factura();
 
   //TS Agregar Factura
   detalle: Detalle = new Detalle();
@@ -95,11 +95,11 @@ export class RegistroListaComponent {
     this.obtenerDetalles()
   }
 
-  ver_detalle(detail: any) {
-    //this.id = id;
-    //this.detalleEdit = this.detalles.find(detalles => this.detalle.factura.idFactura === id)
+  ver_detalle(id: number) {
+    this.id = id;
+    this.detalleEdit = this.detalles.find(detalles => this.detalle.factura.idFactura === id)
     console.log(this.detail);
-    return detail;
+    return id;
   }
   
 
