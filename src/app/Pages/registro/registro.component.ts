@@ -98,7 +98,7 @@ export class RegistroListaComponent {
   ver_detalle(detail: any) {
     //this.id = id;
     //this.detalleEdit = this.detalles.find(detalles => this.detalle.factura.idFactura === id)
-    console.log("editarDetalle ", this.detail);
+    console.log(this.detail);
     return detail;
   }
   
