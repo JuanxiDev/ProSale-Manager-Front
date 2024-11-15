@@ -86,7 +86,7 @@ export class RegistroListaComponent {
     )
   }
 
-  //Editar Proveedor
+  //Editar Factura
   id: number;
   detalleEdit: any = {};
   detail:any ;

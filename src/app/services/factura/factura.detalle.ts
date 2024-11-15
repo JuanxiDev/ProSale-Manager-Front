@@ -20,7 +20,7 @@ export class FacturaService {
   }
 
   agregarFactura(factura: Factura): Observable<Object>{
-    return this.clienteHttp.post(this.urlBase, proveedor)
+    return this.clienteHttp.post(this.urlBase, factura)
   }
 
   actualizarFactura(id:number, facturaEdit:Factura): Observable<Object>{    
