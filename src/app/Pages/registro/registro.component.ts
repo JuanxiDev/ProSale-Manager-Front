@@ -89,16 +89,17 @@ export class RegistroListaComponent {
   //Editar Proveedor
   id: number;
   detalleEdit: any = {};
+  detail:any ;
 
   cancel() {
     this.obtenerDetalles()
   }
 
-  ver_detalle(id: number) {
-    this.id = id;
-    this.detalleEdit = this.detalles.find(detalles => this.detalle.factura.idFactura === id)
-    console.log("editarDetalle ", id, this.detalleEdit);
-    return id;
+  ver_detalle(detail: any) {
+    //this.id = id;
+    //this.detalleEdit = this.detalles.find(detalles => this.detalle.factura.idFactura === id)
+    console.log("editarDetalle ", this.detail);
+    return detail;
   }
   
 
