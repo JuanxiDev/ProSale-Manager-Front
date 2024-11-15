@@ -87,7 +87,6 @@ export class RegistroListaComponent {
   //Editar Factura
   id: number;
   detalleEdit: any = {};
-  detail: any;
 
   cancel() {
     this.obtenerDetalles()
