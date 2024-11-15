@@ -15,19 +15,19 @@ export class FacturaService {
 
   constructor(private clienteHttp: HttpClient) { }
 
-  obtenerProveedorLista(): Observable<Factura[]>{
+  obtenerFacturaLista(): Observable<Factura[]>{
     return this.clienteHttp.get<Factura[]>(this.urlBase)
   }
 
-  agregarProveedor(proveedor: Factura): Observable<Object>{
+  agregarFactura(factura: Factura): Observable<Object>{
     return this.clienteHttp.post(this.urlBase, proveedor)
   }
 
-  actualizarProveedor(id:number, proveedorEdit:Factura): Observable<Object>{    
-    return this.clienteHttp.put<Factura>(`${this.urlBase}/${id}`, proveedorEdit)
+  actualizarFactura(id:number, facturaEdit:Factura): Observable<Object>{    
+    return this.clienteHttp.put<Factura>(`${this.urlBase}/${id}`, facturaEdit)
   }
 
-  eliminarProveedor(id:number): Observable<Object>{
+  eliminarFactura(id:number): Observable<Object>{
     return this.clienteHttp.delete(`${this.urlBase}/${id}`);
   }
 

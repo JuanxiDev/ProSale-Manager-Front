@@ -32,10 +32,10 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let detalle of detalles">
-                            <td>{{detalle}}</td>
-                            <td>{{detalle.factura.usuario.username}}</td>
-                            <td>{{detalle.factura.fecha}}</td>
-                            <td>{{detalle.factura.total}}</td>
+                            <td>{{factura.idFactura}}</td>
+                            <td>{{factura.usuario.username}}</td>
+                            <td>{{factura.fecha}}</td>
+                            <td>{{factura.total}}</td>
                             <td class="text-center">
                                 <div>
                                     <button (click)="ver_detalle(detalle)" type="button"

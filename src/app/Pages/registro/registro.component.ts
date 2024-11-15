@@ -50,8 +50,8 @@ export class RegistroListaComponent {
       }
     });
     this.obtenerDetalles()
+    this.obtenerFacturas()
     this.userlog = this.userService.getUserlog();
-    console.log(this.userlog);
     console.log("********")
     console.log(this.detalles)
   }
@@ -66,13 +66,13 @@ export class RegistroListaComponent {
   }
 
   obtenerFacturas() {
-
-    this.facturaServicio.obtenerProveedorLista().subscribe(
+    this.facturaServicio.obtenerFacturaLista().subscribe(
       (datos => {
         this.facturas = datos;
       })
-    )
+    );
   }
+  factura: Factura = new Factura()
 
   //TS Agregar Factura
   detalle: Detalle = new Detalle();
