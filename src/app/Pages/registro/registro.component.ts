@@ -52,19 +52,19 @@ export class RegistroListaComponent {
     this.obtenerDetalles()
     this.userlog = this.userService.getUserlog();
     console.log(this.userlog);
+    console.log("********")
+    console.log(this.detalle)
   }
 
   obtenerDetalles() {
     //Consumir datos del observable (se suscribe)
     
-    const detail = this.detalleServicio.obtenerDetalleLista().subscribe(
+    this.detalleServicio.obtenerDetalleLista().subscribe(
       (datos=> {
         this.detalles = datos;
       }
     ));
-    console.log(detail);
   }
-  
 
   obtenerFacturas() {
 
