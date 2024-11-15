@@ -57,13 +57,12 @@ export class RegistroListaComponent {
   }
 
   obtenerDetalles() {
-    //Consumir datos del observable (se suscribe)
-    
+    // Consumir datos del observable (se suscribe)
     this.detalleServicio.obtenerDetalleLista().subscribe(
-      (datos=> {
+      (datos) => {
         this.detalles = datos;
       }
-    ));
+    );
   }
 
   obtenerFacturas() {

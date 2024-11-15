@@ -66,6 +66,8 @@ export class ProductoListaComponent {
     this.obtenerProductos()
     this.obtenerProveedores()
 
+    console.log(this.productos)
+
     //Porcentaje de ganancia
     this.gananciaTotal = this.producto.precio - this.producto.precioprov
     this.porcentajeGanancia = (this.gananciaTotal / this.producto.precioprov) * 100;

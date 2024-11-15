@@ -15,6 +15,7 @@ export class DetalleService {
 
   constructor(private clienteHttp: HttpClient) { }
 
+
   obtenerDetalleLista(): Observable<Detalle[]>{
     return this.clienteHttp.get<Detalle[]>(this.urlBase)
   }
