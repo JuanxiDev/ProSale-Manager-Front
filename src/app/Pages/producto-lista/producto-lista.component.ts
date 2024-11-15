@@ -25,7 +25,6 @@ export class ProductoListaComponent {
   userLoginOn: boolean = false;
   userData?: User;
   user: any = this.loginComp.userlog;
-
   modalAdd: boolean = false
   modalEdit: boolean = false
 
