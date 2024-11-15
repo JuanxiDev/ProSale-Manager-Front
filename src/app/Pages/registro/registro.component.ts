@@ -38,7 +38,7 @@ export class RegistroListaComponent {
 
   salida(): void {
     console.log("si xd.")
-      this.userLoginOn = false;
+    this.userLoginOn = false;
   }
 
 
@@ -87,7 +87,7 @@ export class RegistroListaComponent {
   //Editar Factura
   id: number;
   detalleEdit: any = {};
-  detail:any ;
+  detail: any;
 
   cancel() {
     this.obtenerDetalles()
@@ -98,6 +98,6 @@ export class RegistroListaComponent {
     this.detalleEdit = this.detalles.find(detalles => this.detalle.factura.idFactura === id)
     console.log(this.id);
     return id;
-  }  
+  }
 
 }
