@@ -53,7 +53,7 @@ export class RegistroListaComponent {
     this.userlog = this.userService.getUserlog();
     console.log(this.userlog);
     console.log("********")
-    console.log(this.detalleServicio.obtenerDetalleLista)
+    console.log(this.detalles)
   }
 
   obtenerDetalles() {
