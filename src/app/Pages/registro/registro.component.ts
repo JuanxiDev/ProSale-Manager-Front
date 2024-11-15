@@ -72,8 +72,6 @@ export class RegistroListaComponent {
       })
     );
   }
-  factura: Factura = new Factura();
-
   //TS Agregar Factura
   detalle: Detalle = new Detalle();
 
