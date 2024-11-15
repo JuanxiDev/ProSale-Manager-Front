@@ -72,17 +72,6 @@ export class RegistroListaComponent {
       })
     );
   }
-  //TS Agregar Factura
-  detalle: Detalle = new Detalle();
-
-  onSubmitDet() {
-    this.detalleServicio.agregarDetalle(this.detalle).subscribe(
-      {
-        next: (datos) => this.obtenerDetalles(),
-        error: (errores) => console.log(errores)
-      }
-    )
-  }
 
   //Editar Factura
   id: number;
@@ -94,8 +83,8 @@ export class RegistroListaComponent {
 
   ver_detalle(id: number) {
     this.id = id;
-    //this.detalleEdit = this.detalles.find(detalle => this.detalle.factura.idFactura === id)
-    console.log("detalle",this.detalle.factura);
+    this.detalleEdit = this.detalles.find(detalles => detalles.factura.idFactura === id)
+    console.log("detalle",this.detalleEdit.factura.idFactura);
     return id;
   }
 
