@@ -14,9 +14,9 @@
         <li class="nav-item" *ngIf="!userLoginOn">
           <a class="nav-link active" aria-current="page" [routerLink]="['']" routerLinkActive="active">Inicio</a>
         </li>
-        <li class="nav-item" *ngIf="userLoginOn">
+        <!-- <li class="nav-item" *ngIf="userLoginOn">
           <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
-        </li>
+        </li> -->
         <li class="nav-item" *ngIf="userLoginOn">
           <a class="nav-link" [routerLink]="['/facturacion']" routerLinkActive="active">Facturar</a>
         </li>

@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
 
-
 <div class="d-flex justify-content-center">
 
     <div class="container text-center my-3" *ngIf="!userLoginOn">
@@ -35,7 +34,7 @@
                             <td>{{factura.idFactura}}</td>
                             <td>{{factura.usuario.username}}</td>
                             <td>{{factura.fecha}}</td>
-                            <td>{{factura.total}}</td>
+                            <td>$ {{factura.total}}</td>
                             <td class="text-center">
                                 <div>
                                     <button (click)="ver_detalle(factura.idFactura)" type="button"
@@ -52,38 +51,53 @@
         </div>
 
         <!----- Modal Editar Detalles ----->
-        <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" style="background: rgb(231, 232, 238);">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica tu proveedor</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Detalles de la factura</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <!-- <form>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="nombreProveedor" class="form-label">Id Venta</label>
-                                <input type="text" class="form-control" id="idFactura" name="idFactura" required="true"
-                                    [(ngModel)]="detalle.idDetalle">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nit" class="form-label">Nit del Proveedor</label>
-                                <input type="number" class="form-control" id="nit" name="nit" required="true"
-                                    [(ngModel)]="detalle.factura.fecha">
-                            </div>
-                            <div class="mb-3 form-check">
-                                <label for="direccion" class="form-label">Dirección del proveedor</label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" required="true"
-                                    [(ngModel)]="detalle.factura.fecha">
-                            </div>
+                    <div class="modal-body">
+                        <!-- Información principal de la factura -->
+                        <div class="mb-4">
+                            <p><strong>Número de Factura:</strong> {{facturaEdit.factura?.idFactura}}</p>
+                            <p><strong>Fecha:</strong>{{facturaEdit.factura?.fecha}}</p>
+                            <p><strong>Vendedor:</strong>{{facturaEdit.factura?.usuario.username}} </p>
                         </div>
-                        <div class="modal-footer" style="background: rgb(231, 232, 238);">
-                            <button type="button" (click)="cancel()" class="btn btn-danger"
-                                data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar
-                                proveedor</button>
-                        </div>
-                    </form> -->
+                        <!-- Tabla con los detalles de los productos -->
+                        <h6><strong>Detalles de Productos</strong></h6>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let detalle of detalleEdit; let i = index">
+                                  <td>{{ i + 1 }}</td>
+                                  <td>{{ detalle.producto.nombreProducto }}</td>
+                                  <td>{{ detalle.cantidad }}</td>
+                                  <td>$ {{ detalle.producto.precio }}</td>
+                                  <td>$ {{ (detalle.producto.precio * detalle.cantidad) }}</td>
+                                </tr>
+                              </tbody>
+                              
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" class="text-end"><strong>Total venta:</strong></td>
+                                    <td><strong>${{facturaEdit.factura?.total}}</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" (click)="cancel()" class="btn btn-danger" data-bs-dismiss="modal" (click)="setEdit(false)">Cerrar</button>
+                    </div>
                 </div>
             </div>
         </div>

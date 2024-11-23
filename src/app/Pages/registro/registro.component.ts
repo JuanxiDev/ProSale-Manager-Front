@@ -25,6 +25,7 @@ export class RegistroListaComponent {
   userData?: User;
   user: any = this.loginComp.userlog;
   userlog: any;
+  modalDetail: boolean = false
 
   constructor(private detalleServicio: DetalleService,
     private facturaServicio: FacturaService,
@@ -44,16 +45,21 @@ export class RegistroListaComponent {
 
 
   ngOnInit() {
+    this.obtenerFacturas()
     this.loginService.userLogued.subscribe({
       next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
       }
     });
     this.obtenerDetalles()
-    this.obtenerFacturas()
     this.userlog = this.userService.getUserlog();
     console.log("********")
     console.log(this.detalles)
+  }
+
+  setEdit(isOpen:boolean){
+    this.modalDetail = isOpen  
+    console.log("Boton funciona")
   }
 
   obtenerDetalles() {
@@ -71,11 +77,13 @@ export class RegistroListaComponent {
         this.facturas = datos;
       })
     );
+    console.log("carga facturas")
   }
 
   //Editar Factura
   id: number;
-  detalleEdit: any = {};
+  facturaEdit: any = [];
+  detalleEdit: any = []
 
   cancel() {
     this.obtenerDetalles()
@@ -83,8 +91,12 @@ export class RegistroListaComponent {
 
   ver_detalle(id: number) {
     this.id = id;
-    this.detalleEdit = this.detalles.find(detalles => detalles.factura.idFactura === id)
-    console.log("detalle",this.detalleEdit.factura.idFactura);
+    this.facturaEdit = this.detalles.find(detalles => detalles.factura.idFactura === id)
+    console.log("detalle",this.facturaEdit);
+
+    // Filtra todos los detalles asociados con el idFactura
+    this.detalleEdit = this.detalles.filter(detalle => detalle.factura.idFactura === id);
+    console.log("Detalles filtrados:", this.detalleEdit, this.facturaEdit.total);
     return id;
   }
 

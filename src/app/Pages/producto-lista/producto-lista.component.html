@@ -44,9 +44,9 @@
               <td>{{producto.stock}}</td>
               <td class="text-center">
                 <div>
-                  <button (click)="editarProducto(producto.idProducto);setEdit(true)" type="button"
+                  <button (click)="editarProducto(producto.idProducto)" type="button"
                     class="btn btn-warning btn-sm me-3" data-bs-toggle="modal"
-                    data-bs-target="#modalEdit">Editar</button>
+                    data-bs-target="#modalEditar">Editar</button>
                   <button (click)="eliminarProducto(producto.idProducto)" type="button"
                     class="btn btn-danger btn-sm me-3">Eliminar</button>
                 </div>
@@ -123,7 +123,7 @@
 
 
     <!----- Modal Editar Producto ----->
-    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="modalEdit">
+    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
 
